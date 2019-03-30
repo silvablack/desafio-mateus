@@ -5,6 +5,7 @@
  * @version 0.0.1
  */
 
+ const PedidoEstoqueController = require('../controllers/pedidoEstoque');
 
 /**
  * @requires express
@@ -17,12 +18,36 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * @returns Infomations on Service
+ * @description Retorna todos os pedidos de estoque
+ * @callback req is request and res is response
  */
 router.get('/', (req, res) => {
-  res.status(200).send({
-    title: 'Estoque Service',
-    version: '0.0.1',
+  PedidoEstoqueController.prototype.buscarTodos().then((result) => {
+    res.status(200).send(result);
+  }).catch((err) => {
+    //ERROR STATUS 500
+    res.status(500).send({
+      response: {
+        error: err.message
+      },
+    });
+  });
+});
+
+/**
+ * @description Solicita o registro de novo pedido
+ * @callback req is request and res is response
+ */
+router.post('/pedidoEstoque', (req, res) => {
+  PedidoEstoqueController.prototype.novoPedido(req.body).then((result) => {
+    res.status(200).send(result);
+  }).catch((err) => {
+    //ERROR STATUS 500
+    res.status(500).send({
+      response: {
+        error: err.message
+      }
+    })
   });
 });
 
