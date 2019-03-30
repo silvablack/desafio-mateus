@@ -6,6 +6,11 @@
 +   Start Application:
         `npm start`
 
+### Import DATA ###
++   Create database:
+        `create database estoque_mateus;`
++   Import data:
+        `mysql -u root -p estoque_mateus < backup.sql`
 
 ### Tests ###
 +   Run command line:
