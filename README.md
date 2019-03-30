@@ -11,3 +11,8 @@
 +   Run command line:
    + run test unit
         `npm run test-unit`
+
+### Run docker ###
++   Run command line:
+   + run docker file
+        `docker build .`
